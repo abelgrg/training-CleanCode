@@ -1,0 +1,115 @@
+Review 1
+Magic Strings: Replace with named constants or an enum.
+Redundant Conditions: Simplify the conditions for checking days.
+String Comparison: Use StringComparison.OrdinalIgnoreCase for case-insensitive comparison.
+Early Return: Simplify the null or empty check with an early return.
+
+
+public bool IsShopOpen(string day)
+{
+    if (string.IsNullOrEmpty(day))
+    {
+        return false;
+    }
+
+    switch (day.ToLower())
+    {
+        case "friday":
+        case "saturday":
+        case "sunday":
+            return true;
+        default:
+            return false;
+    }
+}
+
+
+Review 3
+Nested Conditions: The nested if statements increase cognitive complexity.
+Magic Number: The number 50 should be replaced with a named constant.
+Exception Handling: Throwing a generic System.Exception is not ideal. Use a more specific exception type.
+
+public long Fibonacci(int n)
+{
+    const int MaxSupportedValue = 50;
+
+    if (n >= MaxSupportedValue)
+    {
+        throw new NotSupportedException("Values greater than or equal to 50 are not supported.");
+    }
+
+    if (n == 0)
+    {
+        return 0;
+    }
+
+    if (n == 1)
+    {
+        return 1;
+    }
+
+    return Fibonacci(n - 1) + Fibonacci(n - 2);
+}
+
+
+Review 4
+Variable Naming: The variable names l and li are not descriptive. Use more meaningful names.
+Count Method: Use Length property instead of Count() method for arrays to improve performance.
+Loop Variable Scope: Declare the loop variable inside the loop to limit its scope.
+
+var cities = new[] { "Austin", "New York", "San Francisco" };
+
+for (var i = 0; i < cities.Length; i++)
+{
+    var city = cities[i];
+    DoStuff();
+    DoSomeOtherStuff();
+
+    // ...
+    // ...
+    // ...
+    Dispatch(city);
+}
+
+
+Review 5
+Magic Number: The number 8 is a magic number and should be replaced with a named constant or an enum for better readability and maintainability.
+Comment: The comment should be more descriptive or the code should be self-explanatory.
+
+const int AdminRole = 8;
+
+if (userRole == AdminRole) // Check if user is Admin
+{
+    
+}
+
+Review 6
+Property Naming: The prefix Car in property names is redundant since they are already within the Car class. Use more concise names.
+Class Naming: The class name Car is appropriate and descriptive.
+
+public class Car
+{
+    public string Make { get; set; }
+    public string Model { get; set; }
+    public string Color { get; set; }
+
+    //...
+}
+
+
+Review 7
+Variable Naming: The variable name ymdstr is not descriptive. Use a more meaningful name.
+
+var formattedDate = DateTime.UtcNow.ToString("MMMM dd, yyyy");
+
+
+Review 9
+Default Parameter Value: The default parameter value null can be improved by directly assigning the default value in the method signature.
+Ternary Operator: The ternary operator is used correctly for assigning the default value.
+
+public void CreateMicrobrewery(string name = "Hipster Brew Co.")
+{
+    var breweryName = name;
+    // ...
+}
+ 
